@@ -13,8 +13,8 @@ var state = {
 
 $(document).ready(function() {
 
-	$("form").on("click", "button#submit", function(event) {
-		$(this).preventDefault()
+	$("form").on("click", ".search", function(event) {
+		event.preventDefault();
 		var query = "02144";
 		state.data = getData(query, displayData);
 	});
@@ -24,13 +24,14 @@ $(document).ready(function() {
 function getData(query, callback) {
 	var settings = {
 		url: state.apis.airNow.BASE_URL,
-		dataType: 'json',
+		dataType: 'jsonp',
 		type: 'GET',
 		success: callback,
 		data: {
 			zipCode: query,
 			distance: 25,
 			API_KEY: state.apis.airNow.API_KEY
+
 		}
 	};
 	$.ajax(settings);
