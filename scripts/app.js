@@ -4,7 +4,7 @@ var state = {
 			BASE_URL: "http://api.globalforestwatch.org/forest-change"
 		},
 		airNow: {
-			BASE_URL: "http://www.airnowapi.org/aq/observation/zipCode/current/",
+			BASE_URL: "https://www.airnowapi.org/aq/observation/zipCode/current/",
 			API_KEY: "48250217-9108-4158-BE74-6C44F69E19DF"
 		}
 	},
