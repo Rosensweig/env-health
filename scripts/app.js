@@ -24,14 +24,13 @@ $(document).ready(function() {
 function getData(query, callback) {
 	var settings = {
 		url: state.apis.airNow.BASE_URL,
-		dataType: 'jsonp',
+		dataType: 'json',
 		type: 'GET',
 		success: callback,
 		data: {
 			zipCode: query,
 			distance: 25,
 			API_KEY: state.apis.airNow.API_KEY
-
 		}
 	};
 	$.ajax(settings);
