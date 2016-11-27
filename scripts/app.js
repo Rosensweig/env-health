@@ -27,13 +27,23 @@ function getData(query, callback) {
 		dataType: 'json',
 		type: 'GET',
 		success: callback,
-		data: {
+		processData: false,
+		data: makeQS({
+			format: "application/json",
 			zipCode: query,
 			distance: 25,
 			API_KEY: state.apis.airNow.API_KEY
-		}
+		})
 	};
 	$.ajax(settings);
+}
+
+function makeQS(obj) {
+	var params = [];
+	for (var key in obj) {
+		params.push(key + '=' + obj[key]);
+	}
+	return params.join('&');
 }
 
 function displayData(data) {
