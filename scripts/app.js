@@ -4,8 +4,7 @@ var state = {
 			BASE_URL: "http://api.globalforestwatch.org/forest-change"
 		},
 		airNow: {
-			BASE_URL: "https://www.airnowapi.org/aq/observation/zipCode/current/",
-			API_KEY: "48250217-9108-4158-BE74-6C44F69E19DF"
+			BASE_URL: "https://arcane-ridge-20214.herokuapp.com/air/"
 		}
 	},
 	data: null
@@ -51,17 +50,8 @@ function getData(query, callback) {
         //  };
             var result = $.ajax({
                 /* update API end point */
-                url: state.apis.airNow.BASE_URL,
-                data: makeQS({
-					format: "application/json",
-					zipCode: query,
-					distance: 25,
-					API_KEY: state.apis.airNow.API_KEY
-				}),
-                crossDomain: true,
-				success: callback,
-				processData: false,
-                dataType: "jsonp",
+                url: state.apis.airNow.BASE_URL + query,
+		success: callback,
                 /*set the call type GET / POST*/
                 type: "GET"
             })
