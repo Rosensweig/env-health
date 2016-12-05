@@ -8,3 +8,34 @@ form {
 	margin-right: auto;
 }
 
+div.quality-1 {
+	background-color: #00e400;
+}
+
+div.quality-2 {
+	background-color: #ffff00;
+}
+
+div.quality-3 {
+	background-color: #ff7e00;
+}
+
+div.quality-4 {
+	background-color: #ff0000;
+}
+
+div.quality-5 {
+	background-color: #99004c;
+}
+
+div.quality-6 {
+	background-color: #7e0023;
+}
+
+div.quality-1, div.quality-2 {
+	color: "black";
+}
+
+div.quality-3, div.quality-4, div.quality-5, div.quality-6, div.quality-7 {
+	color: "white";
+}

@@ -12,69 +12,39 @@ var state = {
 
 $(document).ready(function() {
 
-	$("form").on("click", ".search", function(event) {
+	$(".search").click(function(event) {
 		event.preventDefault();
-		var query = "02144";
+		var query = $(this).siblings(".location").val().match(/[0-9]{5}/) ? $(this).siblings(".location").val() : "02144";
 		state.data = getData(query, displayData);
+	});
+
+	$(".location").keyup( function(event){
+		if(event.which==13) {
+			$(".search").trigger("click");
+			return false;
+		}
 	});
 
 });
 
 function getData(query, callback) {
-	/*
-	var settings = {
-		url: state.apis.airNow.BASE_URL,
-		dataType: 'jsonp',
-		crossDomain: true,
-		type: 'GET',
+    var result = $.ajax({
+        url: state.apis.airNow.BASE_URL + query,
 		success: callback,
-		processData: false,
-		data: makeQS({
-			format: "application/json",
-			zipCode: query,
-			distance: 25,
-			API_KEY: state.apis.airNow.API_KEY
-		})
-	};
-	console.log($.ajax(settings));
-	console.log("end of getData function");
-	*/
-	//var params = {
-
-		// data: makeQS({
-		// 	format: "application/json",
-		// 	zipCode: query,
-		// 	distance: 25,
-		// 	API_KEY: state.apis.airNow.API_KEY
-		// });
-        //  };
-            var result = $.ajax({
-                /* update API end point */
-                url: state.apis.airNow.BASE_URL + query,
-		success: callback,
-                /*set the call type GET / POST*/
-                type: "GET"
-            })
-            /* if the call is NOT successful show errors */
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-            });
-}
-
-
-
-
-function makeQS(obj) {
-	var params = [];
-	for (var key in obj) {
-		params.push(key + '=' + obj[key]);
-	}
-	return params.join('&');
+        type: "GET"
+    })
+    /* if the call is NOT successful show errors */
+    .fail(function (jqXHR, error, errorThrown) {
+        console.log(jqXHR);
+        console.log(error);
+        console.log(errorThrown);
+    });
 }
 
 function displayData(data) {
-	console.log("Hello from displayData()");
+	data=JSON.parse(data);
 	console.log(data);
+	$(".display").html("<h3>Air quality for "+data[0].ReportingArea+", "+data[0].StateCode+" on "+data[0].DateObserved.trim()+":</h3>");
+	$(".display").append('<div class="quality-'+data[0].Category.Number+'"><h4>Air Quality Index: '+data[0].AQI+" out of 500, " +data[0].Category.Name+'.</h4></div>');
+	$(".display").append('<p>(Lower numbers represent cleaner air.)</p>')
 }
