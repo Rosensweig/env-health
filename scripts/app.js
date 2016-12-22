@@ -30,6 +30,7 @@ $(document).ready(function() {
 function getData(query, callback) {
     var result = $.ajax({
         url: state.apis.airNow.BASE_URL + query,
+        dataType: 'json',
 		success: callback,
         type: "GET"
     })
@@ -42,9 +43,9 @@ function getData(query, callback) {
 }
 
 function displayData(data) {
-	data=JSON.parse(data);
+	// data=JSON.parse(data);
 	console.log(data);
-	$(".display").html("<h3>Air quality for "+data[0].ReportingArea+", "+data[0].StateCode+" on "+data[0].DateObserved.trim()+":</h3>");
-	$(".display").append('<div class="quality-'+data[0].Category.Number+'"><h4>Air Quality Index: '+data[0].AQI+" out of 500, " +data[0].Category.Name+'.</h4></div>');
+	$(".display").html("<h3>Air quality for "+data.today[0].ReportingArea+", "+data.today[0].StateCode+" on "+data.today[0].DateObserved.trim()+":</h3>");
+	$(".display").append('<div class="quality-'+data.today[0].Category.Number+'"><h4>Air Quality Index: '+data.today[0].AQI+" out of 500, " +data.today[0].Category.Name+'.</h4></div>');
 	$(".display").append('<p>(Lower numbers represent cleaner air.)</p>')
 }
