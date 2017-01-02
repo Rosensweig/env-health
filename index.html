@@ -5,14 +5,18 @@
 	<link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-	<header>
-		<h1>How Clean is the Air <br>In Your Area?</h1>
-	</header>
-	<form>
-		<input type="text" class="location" placeholder="Zip Code (5 Digits)"> <button type="button" class="search">Submit</button> <button type="button" class="myLocation">Use My Location</button>
-	</form>
-	<div class="display">
-	</div>
+	<main>
+		<header>
+			<h1>How Clean is the Air <br>In Your Area?</h1>
+		</header>
+		<div>
+			<form>
+				<input type="text" class="location" placeholder="Zip Code (5 Digits)"> <button type="button" class="search">Submit</button><img src="images/loading_anim.gif" class="loading">
+			</form>
+		</div>
+		<div class="display">
+		</div>
+	</main>
 
 	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>

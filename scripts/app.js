@@ -20,14 +20,17 @@ $(document).ready(function() {
 
 	$(".location").keyup( function(event){
 		if(event.which==13) {
-			$(".search").trigger("click");
+			$(".search").click();
 			return false;
 		}
 	});
 
+	setBackground();
+
 });
 
 function getData(query, callback) {
+	$(".loading").css({ "visibility" : "visible" });
     var result = $.ajax({
         url: state.apis.airNow.BASE_URL + query,
         dataType: 'json',
@@ -44,39 +47,130 @@ function getData(query, callback) {
 
 function displayData(data) {
 	console.log(data);
+	$(".loading").css({ "visibility" : "hidden" });
+	// $(".display").css({"background-image": "none"});
 	$(".display").html('<canvas id="chart" width="400" height="400"></canvas>');
 	var ctx = $("#chart");
-	var dataSet = [dataPoint(data.today[0])];
+	var sortedData = {};
+	for (var i=0; i<data.today.length; i++) {
+		var paramName = data.today[i].ParameterName.toLowerCase();
+		if (paramName in sortedData) {
+			sortedData[paramName].unshift(dataPoint(data.today[i]));
+		}
+		else {
+			sortedData[paramName] = [dataPoint(data.today[i])]
+		}
+	}
 	var firstYear = data.today[0].DateObserved.slice(0,4);
 	if (data.year1.length) {
-		dataSet.unshift(dataPoint(data.year1[0]));
+		for (var i=0; i<data.year1.length; i++) {
+			var paramName = data.year1[i].ParameterName.toLowerCase();
+			if (paramName in sortedData) {
+				sortedData[paramName].unshift(dataPoint(data.year1[i]));
+			}
+			else {
+				sortedData[paramName] = [dataPoint(data.year1[i])]
+			}
+		}
 		firstYear = data.year1[0].DateObserved.slice(0,4);
 		if (data.year2.length) {
-			dataSet.unshift(dataPoint(data.year2[0]));
+			for (var i=0; i<data.year2.length; i++) {
+				var paramName = data.year2[i].ParameterName.toLowerCase();
+				if (paramName in sortedData) {
+					sortedData[paramName].unshift(dataPoint(data.year2[i]));
+				}
+				else {
+					sortedData[paramName] = [dataPoint(data.year2[i])]
+				}
+			}
 			firstYear = data.year2[0].DateObserved.slice(0,4);
 			if (data.year3.length) {
-				dataSet.unshift(dataPoint(data.year3[0]));
+				for (var i=0; i<data.year3.length; i++) {
+					var paramName = data.year3[i].ParameterName.toLowerCase();
+					if (paramName in sortedData) {
+						sortedData[paramName].unshift(dataPoint(data.year3[i]));
+					}
+					else {
+						sortedData[paramName] = [dataPoint(data.year3[i])]
+					}
+				}
 				firstYear = data.year3[0].DateObserved.slice(0,4);
 				if (data.year4.length) {
-					dataSet.unshift(dataPoint(data.year4[0]));
+					for (var i=0; i<data.year4.length; i++) {
+						var paramName = data.year4[i].ParameterName.toLowerCase();
+						if (paramName in sortedData) {
+							sortedData[paramName].unshift(dataPoint(data.year4[i]));
+						}
+						else {
+							sortedData[paramName] = [dataPoint(data.year4[i])]
+						}
+					}
 					firstYear = data.year4[0].DateObserved.slice(0,4);
 					if (data.year5.length) {
-						dataSet.unshift(dataPoint(data.year5[0]));
+						for (var i=0; i<data.year5.length; i++) {
+							var paramName = data.year5[i].ParameterName.toLowerCase();
+							if (paramName in sortedData) {
+								sortedData[paramName].unshift(dataPoint(data.year5[i]));
+							}
+							else {
+								sortedData[paramName] = [dataPoint(data.year5[i])]
+							}
+						}
 						firstYear = data.year5[0].DateObserved.slice(0,4);
 						if (data.year6.length) {
-							dataSet.unshift(dataPoint(data.year6[0]));
+							for (var i=0; i<data.year6.length; i++) {
+								var paramName = data.year6[i].ParameterName.toLowerCase();
+								if (paramName in sortedData) {
+									sortedData[paramName].unshift(dataPoint(data.year6[i]));
+								}
+								else {
+									sortedData[paramName] = [dataPoint(data.year6[i])]
+								}
+							}
 							firstYear = data.year6[0].DateObserved.slice(0,4);
 							if (data.year7.length) {
-								dataSet.unshift(dataPoint(data.year7[0]));
+								for (var i=0; i<data.year7.length; i++) {
+									var paramName = data.year7[i].ParameterName.toLowerCase();
+									if (paramName in sortedData) {
+										sortedData[paramName].unshift(dataPoint(data.year7[i]));
+									}
+									else {
+										sortedData[paramName] = [dataPoint(data.year7[i])]
+									}
+								}
 								firstYear = data.year7[0].DateObserved.slice(0,4);
 								if (data.year8.length) {
-									dataSet.unshift(dataPoint(data.year8[0]));
+									for (var i=0; i<data.year8.length; i++) {
+										var paramName = data.year8[i].ParameterName.toLowerCase();
+										if (paramName in sortedData) {
+											sortedData[paramName].unshift(dataPoint(data.year8[i]));
+										}
+										else {
+											sortedData[paramName] = [dataPoint(data.year8[i])]
+										}
+									}
 									firstYear = data.year8[0].DateObserved.slice(0,4);
 									if (data.year9.length) {
-										dataSet.unshift(dataPoint(data.year9[0]));
+										for (var i=0; i<data.year9.length; i++) {
+											var paramName = data.year9[i].ParameterName.toLowerCase();
+											if (paramName in sortedData) {
+												sortedData[paramName].unshift(dataPoint(data.year9[i]));
+											}
+											else {
+												sortedData[paramName] = [dataPoint(data.year9[i])]
+											}
+										}
 										firstYear = data.year9[0].DateObserved.slice(0,4);
 										if (data.year10.length) {
-											dataSet.unshift(dataPoint(data.year10[0]));
+											for (var i=0; i<data.year10.length; i++) {
+												var paramName = data.year10[i].ParameterName.toLowerCase();
+												if (paramName in sortedData) {
+													sortedData[paramName].unshift(dataPoint(data.year10[i]));
+												}
+												else {
+													sortedData[paramName] = [dataPoint(data.year10[i])]
+												}
+											}
 											firstYear = data.year10[0].DateObserved.slice(0,4);
 										}
 									}
@@ -88,20 +182,31 @@ function displayData(data) {
 			}
 		}
 	}
+	if (sortedData["ozone"] && sortedData["o3"]) {
+		sortedData["ozone"] = sortedData["ozone"].concat(sortedData["o3"]);
+		delete sortedData["o3"];
+	}
 	var month = parseMonth(data.today[0].DateObserved.slice(5,7));
+	var datasets = [];
+	var colors = ["blue", "red", "green", "purple", "orange", "gray"];
+	var i = 0;
+	Object.keys(sortedData).forEach(function (key){
+		datasets.push({
+			label: key.charAt(0).toUpperCase()+key.slice(1)+" in "+data.today[0].ReportingArea+", "+data.today[0].StateCode+" on "+month+" "+data.today[0].DateObserved.slice(8).trim()+", years "+firstYear+"-"+data.today[0].DateObserved.slice(0,4),
+			data: sortedData[key],
+			fill: false,
+			borderWidth: 8,
+			pointBorderWidth: 10,
+			borderColor: colors[i],
+			pointBorderColor: "black"
+		});
+		i++;
+	})
 	Chart.defaults.global.defaultFontColor = "black";
 	var lineChart = new Chart(ctx, {
 		type: 'line',
 		data: {
-			// labels: labels,
-			datasets: [{
-				label: "Ozone in "+data.today[0].ReportingArea+", "+data.today[0].StateCode+" on "+month+" "+data.today[0].DateObserved.slice(8).trim()+", years "+firstYear+"-"+data.today[0].DateObserved.slice(0,4),
-				data: dataSet,
-				fill: false, 
-				borderWidth: 8,
-				pointBorderWidth: 12,
-				pointBackgroundColor: "black"
-			}]
+			datasets: datasets
 		},
 
 		options: {
@@ -141,7 +246,7 @@ function adjustScale(AQI) {
 }
 
 function dataPoint(data) {
-	point = {
+	var point = {
 		x: Number(data.DateObserved.slice(0,4)),
 		y: adjustScale(data.AQI)
 	}
@@ -175,6 +280,11 @@ function parseMonth(monthNumberString) {
 		case "12":
 			return "December";
 		default:
-			return ""
+			return "";
 	}
+}
+
+function setBackground(){
+	var imageName = "images/TreePD" + ((Math.floor(Math.random() * 15) +1).toString()) + ".jpg";
+	$("body").css( {"background-image" : "url("+imageName+")"} );
 }
