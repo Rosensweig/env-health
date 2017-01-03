@@ -14,8 +14,13 @@ $(document).ready(function() {
 
 	$("form").submit(function(event) {
 		event.preventDefault();
-		var query = $(this).children(".location").val().match(/[0-9]{5}/)&&($(this).children(".location").val().length==5) ? $(this).children(".location").val() : "02144";
-		state.data = getData(query, displayData);
+		var query = $(this).children(".location").val();
+		if (query.match(/[0-9]{5}/) && query.length==5) {
+			state.data = getData(query, displayData);
+		}
+		else {
+			alert("Please enter a valid zip code: 5 numeric digits.");
+		}
 	});
 
 	$('.faq-btn').click(toggleFAQ);
@@ -44,8 +49,12 @@ function getData(query, callback) {
 function displayData(data) {
 	console.log(data);
 	$(".loading").css({ "visibility" : "hidden" });
-	$(".display").toggleClass("hidden", false);
-	$(".faq").toggleClass("hidden", true)
+	if (data.today.length==0) {
+		alert("No data available for this zip code, or within 25 miles. Try another area.");
+		return;
+	}
+	$(".display").removeClass("hidden");
+	$(".faq").addClass("hidden");
 	// $(".display").css({"background-image": "none"});
 	$(".display").html('<canvas id="chart" width="400" height="400"></canvas>');
 	var ctx = $("#chart");
