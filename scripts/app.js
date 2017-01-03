@@ -12,18 +12,14 @@ var state = {
 
 $(document).ready(function() {
 
-	$(".search").click(function(event) {
+	$("form").submit(function(event) {
 		event.preventDefault();
-		var query = $(this).siblings(".location").val().match(/[0-9]{5}/) ? $(this).siblings(".location").val() : "02144";
+		var query = $(this).children(".location").val().match(/[0-9]{5}/)&&($(this).children(".location").val().length==5) ? $(this).children(".location").val() : "02144";
 		state.data = getData(query, displayData);
 	});
 
-	$(".location").keyup( function(event){
-		if(event.which==13) {
-			$(".search").click();
-			return false;
-		}
-	});
+	$('.faq-btn').click(toggleFAQ);
+	$('.close-btn').click(toggleFAQ);
 
 	setBackground();
 
@@ -48,6 +44,8 @@ function getData(query, callback) {
 function displayData(data) {
 	console.log(data);
 	$(".loading").css({ "visibility" : "hidden" });
+	$(".display").toggleClass("hidden", false);
+	$(".faq").toggleClass("hidden", true)
 	// $(".display").css({"background-image": "none"});
 	$(".display").html('<canvas id="chart" width="400" height="400"></canvas>');
 	var ctx = $("#chart");
@@ -188,15 +186,15 @@ function displayData(data) {
 	}
 	var month = parseMonth(data.today[0].DateObserved.slice(5,7));
 	var datasets = [];
-	var colors = ["blue", "red", "green", "purple", "orange", "gray"];
+	var colors = ["gray", "blue", "red", "green", "purple", "orange"];
 	var i = 0;
 	Object.keys(sortedData).forEach(function (key){
 		datasets.push({
-			label: key.charAt(0).toUpperCase()+key.slice(1)+" in "+data.today[0].ReportingArea+", "+data.today[0].StateCode+" on "+month+" "+data.today[0].DateObserved.slice(8).trim()+", years "+firstYear+"-"+data.today[0].DateObserved.slice(0,4),
+			label: key.charAt(0).toUpperCase()+key.slice(1),
 			data: sortedData[key],
 			fill: false,
-			borderWidth: 8,
-			pointBorderWidth: 10,
+			borderWidth: 7,
+			pointBorderWidth: 8,
 			borderColor: colors[i],
 			pointBorderColor: "black"
 		});
@@ -210,6 +208,11 @@ function displayData(data) {
 		},
 
 		options: {
+			title: {
+				display: true,
+				fontSize: 24,
+				text: "Air Quality in "+data.today[0].ReportingArea+", "+data.today[0].StateCode+" on "+month+" "+data.today[0].DateObserved.slice(8).trim()+",\nYears "+firstYear+"-"+data.today[0].DateObserved.slice(0,4)
+			},
 			scales: {
 				yAxes: [{
 					ticks: {
@@ -287,4 +290,9 @@ function parseMonth(monthNumberString) {
 function setBackground(){
 	var imageName = "images/TreePD" + ((Math.floor(Math.random() * 15) +1).toString()) + ".jpg";
 	$("body").css( {"background-image" : "url("+imageName+")"} );
+}
+
+function toggleFAQ(){
+	$(".faq").toggleClass("hidden");
+	$(".display").toggleClass("hidden");
 }

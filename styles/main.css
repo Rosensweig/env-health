@@ -1,6 +1,11 @@
 h1 {
 	text-align: center;
 	margin: 0;
+	background-color: rgba(255,255,255,0.3)
+}
+
+li {
+	text-align: left;
 }
 
 body {
@@ -13,7 +18,6 @@ body {
 }
 
 main {
-	background-color: rgba(255,255,255,0.8);
 	font-family: sans-serif;
 	padding-top: 25px;
 }
@@ -25,12 +29,20 @@ main {
 	margin-left: 10px;
 }
 
+.hidden {
+	display: none;
+}
+
+.faqButton {
+	position: fixed;
+	right: 10px;
+	top: 10px;
+	background-color: rgba(255,255,255,0.3)
+}
+
 .display {
 	width: 100%;
 	height: 800px;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center top;
 	margin-top: 20px;
 }
 
@@ -50,38 +62,42 @@ canvas#chart {
     height: auto !important;
     width: 100% !important;
     margin: 0 auto;
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255,255,255,0.7);
     padding: 10px;
 }
 
-div.quality-1 {
+.faq {
+	background-color: rgba(255,255,255,0.7);
+	width: 100%;
+	height: 800px;
+}
+
+.quality-1 {
 	background-color: #00e400;
+	color: black;
 }
 
-div.quality-2 {
+.quality-2 {
 	background-color: #ffff00;
+	color: black;
 }
 
-div.quality-3 {
+.quality-3 {
 	background-color: #ff7e00;
+	color: white;
 }
 
-div.quality-4 {
+.quality-4 {
 	background-color: #ff0000;
+	color: white;
 }
 
-div.quality-5 {
+.quality-5 {
 	background-color: #99004c;
+	color: white;
 }
 
-div.quality-6 {
+.quality-6 {
 	background-color: #7e0023;
-}
-
-div.quality-1, div.quality-2 {
-	color: "black";
-}
-
-div.quality-3, div.quality-4, div.quality-5, div.quality-6, div.quality-7 {
-	color: "white";
+	color: white;
 }
