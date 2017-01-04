@@ -23,6 +23,8 @@ $(document).ready(function() {
 		}
 	});
 
+	$(".fa-search").click(function() {$("form").trigger("submit")});
+
 	$('.faq-btn').click(toggleFAQ);
 	$('.close-btn').click(toggleFAQ);
 
@@ -50,7 +52,7 @@ function displayData(data) {
 	console.log(data);
 	$(".loading").css({ "visibility" : "hidden" });
 	if (data.today.length==0) {
-		alert("No data available for this zip code, or within 25 miles. Try another area.");
+		alert("No data available for this zip code, or within 100 miles. Please make sure your zip code is correct, or try another area. Note: only United States data currently available.");
 		return;
 	}
 	$(".display").removeClass("hidden");
@@ -297,7 +299,7 @@ function parseMonth(monthNumberString) {
 }
 
 function setBackground(){
-	var imageName = "images/TreePD" + ((Math.floor(Math.random() * 15) +1).toString()) + ".jpg";
+	var imageName = "images/TreePD" + ((Math.floor(Math.random() * 10) +1).toString()) + ".jpg";
 	$("body").css( {"background-image" : "url("+imageName+")"} );
 }
 

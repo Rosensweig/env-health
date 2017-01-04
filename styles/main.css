@@ -12,7 +12,7 @@ li {
 }
 
 body {
-	background-color: #C9FFCA;
+	background-color: black;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -43,7 +43,7 @@ main {
 	top: 10px;
 }
 
-.faqButton a {
+.faqButton a, .display a {
 	text-decoration: none;
 	font-size: 40px;
 	color: white;
@@ -52,10 +52,20 @@ main {
 	text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
 }
 
-.fa-search {
+.faq a.fa {
 	text-decoration: none;
 	font-size: 40px;
 	color: black;
+	-webkit-text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+	-moz-text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+	text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+}
+
+.fa-search {
+	text-decoration: none;
+	color: black;
+	position: relative;
+	right: 28px;
 }
 
 input {
