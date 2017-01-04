@@ -1,7 +1,10 @@
 h1 {
 	text-align: center;
 	margin: 0;
-	background-color: rgba(255,255,255,0.8)
+	color: white;
+	-webkit-text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+	-moz-text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+	text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
 }
 
 li {
@@ -20,6 +23,7 @@ body {
 main {
 	font-family: sans-serif;
 	padding-top: 25px;
+	min-height: 800px;
 }
 
 .loading {
@@ -37,7 +41,28 @@ main {
 	position: fixed;
 	right: 10px;
 	top: 10px;
-	background-color: rgba(255,255,255,0.8)
+}
+
+.faqButton a {
+	text-decoration: none;
+	font-size: 40px;
+	color: white;
+	-webkit-text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+	-moz-text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+	text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+}
+
+.fa-search {
+	text-decoration: none;
+	font-size: 40px;
+	color: black;
+}
+
+input {
+    font-size: 20px;
+    padding: 5px;
+    margin-top: 15px;
+    text-align: center;
 }
 
 .display {
@@ -69,7 +94,9 @@ canvas#chart {
 .faq {
 	background-color: rgba(255,255,255,0.8);
 	width: 100%;
-	height: 800px;
+	max-height: 600px;
+	overflow: scroll;
+	margin-top: 20px;
 }
 
 .quality-1 {

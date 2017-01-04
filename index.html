@@ -3,6 +3,7 @@
 <head>
 	<title>How Clean is the Air In Your Area?</title>
 	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
 </head>
 <body>
 	<main>
@@ -11,23 +12,23 @@
 		</header>
 		<div>
 			<form>
-				<input type="text" class="location" placeholder="Zip Code (5 Digits)"> <input type="submit" class="search" value="Submit"/><img src="images/loading_anim.gif" class="loading">
+				<input type="text" class="location" placeholder="Zip Code (5 Digits)"> <!-- <a href="#" class="fa fa-search"> --> <img src="images/loading_anim.gif" class="loading">
 			</form>
 		</div>
 		<div class="display">
 		</div>
-		<div class="faqButton"><h3><a href="#" class="faq-btn">FAQ</a></h3></div>
+		<div class="faqButton"><a href="#" class="faq-btn fa fa-question-circle"></a></div>
 		<div class="faq hidden">
 			<h2>Frequently Asked Questions</h2>
 			<ul>
 				<li><h5>What is "Adjusted Air Quality Index"? What does it mean for living here and breathing the air daily?</h5>
-					<p>If you're seeing positive numbers, you're probably okay, but ideal is above 50. If you're seeing negative numbers regularly, for any measured parameter, see if you can do something about it! I've provided historical data as well, so that you can put your current air quality in perspective with <br>
-					<span class="quality-1">50 to 100 = Good</span><br>
-					<span class="quality-2">0 to 49 = Moderate</span><br>
-					<span class="quality-3">-50 to -1 = Unhealthy for Sensitive Groups</span><br>
-					<span class="quality-4">-100 to -51 = Unhealthy</span><br>
-					<span class="quality-5">-200 to -101 = Very Unhealthy</span><br>
-					<span class="quality-6">-400 to -201 = Hazardous</span></p>
+					<p>If you're seeing positive numbers, you're probably okay, but ideal is above 50. If you're seeing negative numbers regularly, for any measured parameter, see if you can do something about it! I've provided historical data as well, so that you can put your current air quality in perspective over time.</p>
+					<p><span class="quality-1"> 50 to 100 = Good </span><br>
+					<span class="quality-2"> 0 to 49 = Moderate </span><br>
+					<span class="quality-3"> -50 to -1 = Unhealthy for Sensitive Groups </span><br>
+					<span class="quality-4"> -100 to -51 = Unhealthy </span><br>
+					<span class="quality-5"> -200 to -101 = Very Unhealthy </span><br>
+					<span class="quality-6"> -400 to -201 = Hazardous </span></p>
 
 					<p>Adjusted Air Quality Index is based on a more official figure, <a href="https://airnow.gov/index.cfm?action=aqibasics.aqi">Air Quality Index</a> (AQI), but AQI goes up when air quality is worse, and down when air quality is better. This seemed counter-intuitive, and I'm aiming this at everyday people (not those who know much about air quality), so I reversed it. Higher numbers mean better air quality. If you want to translate from displayed AAQI to the more official AQI figures, use: 100-AAQI = AQI.</p>
 				</li>
