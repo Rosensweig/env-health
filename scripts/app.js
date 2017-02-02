@@ -4,7 +4,7 @@ var state = {
 			BASE_URL: "http://api.globalforestwatch.org/forest-change"
 		},
 		airNow: {
-			BASE_URL: "https://arcane-ridge-20214.herokuapp.com/air/"
+			BASE_URL: "https://enigmatic-cliffs-45594.herokuapp.com/air/"
 		}
 	},
 	data: null
